@@ -18,6 +18,7 @@ export class User {
     name: string,
     type: string,
     phones: string[],
+    address: string,
   ) {
     this.id = id;
     this.email = email;
@@ -25,7 +26,7 @@ export class User {
     this.name = name;
     this.type = type;
     this.phones = phones;
-    this.address = '';
+    this.address = address;
     this.createdAt = new Date(); // Set creation date to current date
     this.updatedAt = new Date(); // Set update date to current date
     this.items = []; // Initialize items as an empty array
