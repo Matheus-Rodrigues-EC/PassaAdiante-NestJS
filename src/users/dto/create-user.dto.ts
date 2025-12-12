@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { UserType } from '../../generated/prisma/enums.js';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -17,7 +18,7 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @IsString()
-  type: string;
+  type: UserType;
 
   @IsNotEmpty({ each: true })
   @IsString({ each: true })

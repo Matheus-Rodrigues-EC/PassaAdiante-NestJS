@@ -1,9 +1,16 @@
+enum UserType {
+  ADMIN = 'admin',
+  DONOR = 'donor',
+  RECEIVER = 'receiver',
+  INSTITUITION = 'institution',
+}
+
 export class User {
   id: string;
   email: string;
   password: string;
   name: string;
-  type: string;
+  type: UserType;
   phones: string[];
   address: string;
   createdAt: Date;
@@ -16,7 +23,7 @@ export class User {
     email: string,
     password: string,
     name: string,
-    type: string,
+    type: UserType,
     phones: string[],
     address: string,
   ) {
@@ -24,7 +31,7 @@ export class User {
     this.email = email;
     this.password = password;
     this.name = name;
-    this.type = type;
+    this.type = UserType[type.toUpperCase() as keyof typeof UserType];
     this.phones = phones;
     this.address = address;
     this.createdAt = new Date(); // Set creation date to current date

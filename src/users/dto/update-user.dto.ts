@@ -7,8 +7,10 @@ import {
   IsEmail,
   MinLength,
   IsDate,
-  IsArray,
+  // IsArray,
+  // IsOptional,
 } from 'class-validator';
+import { UserType } from '../../generated/prisma/enums.js';
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsNotEmpty()
@@ -26,7 +28,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
 
   @IsNotEmpty()
   @IsString()
-  type: string;
+  type: UserType;
 
   @IsNotEmpty({ each: true })
   @IsString({ each: true })
@@ -43,11 +45,13 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsDate()
   updatedAt: Date;
 
-  @IsArray()
-  @IsNotEmpty({ each: true })
-  items: any[];
+  // @IsOptional()
+  // @IsArray()
+  // @IsNotEmpty({ each: true })
+  // items?: any[];
 
-  @IsArray()
-  @IsNotEmpty({ each: true })
-  orders: any[];
+  // @IsOptional()
+  // @IsArray()
+  // @IsNotEmpty({ each: true })
+  // orders?: any[];
 }
