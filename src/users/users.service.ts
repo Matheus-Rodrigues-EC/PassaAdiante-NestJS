@@ -1,26 +1,41 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+// import JWTService from '..auth/jwt/jwt.service.js';
+import { CreateUserDto } from './dto/create-user.dto.js';
+import { UpdateUserDto } from './dto/update-user.dto.js';
+import { UsersRepository } from './users.repository.js';
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(
+    private readonly userRepository: UsersRepository,
+    // private readonly jwtService: JWTService,
+  ) {}
+
+  getHealthUserService(): string {
+    return 'Users Service is healthy';
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async createUser(user: CreateUserDto) {
+    const userExists = await this.userRepository.findByEmail(user?.email || '');
+    if (!userExists) {
+      throw new HttpException('User already exists', HttpStatus.CONFLICT);
+    }
+    return await this.userRepository.create(user);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findAllUsers() {
+    return await this.userRepository.findAll();
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async findOneUser(id: string) {
+    return await this.userRepository.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async updateUser(id: string, user: UpdateUserDto) {
+    return await this.userRepository.update(id, user);
+  }
+
+  async removeUser(id: string) {
+    return await this.userRepository.remove(id);
   }
 }
