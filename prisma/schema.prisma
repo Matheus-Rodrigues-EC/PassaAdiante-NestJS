@@ -13,6 +13,30 @@ datasource db {
   provider = "postgresql"
 }
 
+enum ItemCategory {
+  BOOK
+  NOTEBOOK
+  BACKPACK
+  PENCIL
+  PEN
+  ERASER
+  PENCIL_CASE
+  UNIFORM
+  SHOES
+  SCHOOL_SUPPLIES
+}
+
+enum ItemCondition {
+  NEW
+  GOOD
+  FAIR
+}
+
+enum ItemAvailability {
+  AVAILABLE
+  DONATED
+}
+
 enum UserType {
   ADMIN
   DONOR
@@ -36,10 +60,19 @@ model User {
   @@map("user")
 }
 
+
 model Item {
   id     String @id @default(uuid())
   user   User   @relation("UserItems", fields: [userId], references: [id])
   userId String
+
+  name         String
+  description  String?
+  category     ItemCategory
+  condition    ItemCondition
+  availability ItemAvailability
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model Order {
