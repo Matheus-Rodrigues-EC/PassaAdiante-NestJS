@@ -11,7 +11,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL") // Ignore this warning if you're using a supported database
 }
 
 enum UserType {
