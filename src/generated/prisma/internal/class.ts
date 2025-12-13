@@ -41,8 +41,8 @@ const config: runtime.GetPrismaClientConfig = {
     "isCustomOutput": true
   },
   "relativePath": "../../../prisma",
-  "clientVersion": "6.19.0",
-  "engineVersion": "2ba551f319ab1df4bc874a89965d8b3641056773",
+  "clientVersion": "6.19.1",
+  "engineVersion": "c2990dca591cba766e3b7ef5d9e8a84796e47ab7",
   "datasourceNames": [
     "db"
   ],
@@ -56,8 +56,8 @@ const config: runtime.GetPrismaClientConfig = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\") // Ignore this warning if you're using a supported database\n}\n\nenum UserType {\n  ADMIN\n  DONOR\n  RECEIVER\n  INTITUITION\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  email     String   @unique\n  password  String\n  name      String?\n  type      UserType @default(DONOR)\n  phones    String[]\n  address   String?\n  items     Item[]   @relation(\"UserItems\")\n  orders    Order[]  @relation(\"UserOrders\")\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@map(\"user\")\n}\n\nmodel Item {\n  id     String @id @default(uuid())\n  user   User   @relation(\"UserItems\", fields: [userId], references: [id])\n  userId String\n}\n\nmodel Order {\n  id     String @id @default(uuid())\n  user   User   @relation(\"UserOrders\", fields: [userId], references: [id])\n  userId String\n}\n",
-  "inlineSchemaHash": "b500cf71d981351a65923aeeb45c07b9bd4bce441e189790668fafd555f212d6",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum UserType {\n  ADMIN\n  DONOR\n  RECEIVER\n  INTITUITION\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  email     String   @unique\n  password  String\n  name      String?\n  type      UserType @default(DONOR)\n  phones    String[]\n  address   String?\n  items     Item[]   @relation(\"UserItems\")\n  orders    Order[]  @relation(\"UserOrders\")\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@map(\"user\")\n}\n\nmodel Item {\n  id     String @id @default(uuid())\n  user   User   @relation(\"UserItems\", fields: [userId], references: [id])\n  userId String\n}\n\nmodel Order {\n  id     String @id @default(uuid())\n  user   User   @relation(\"UserOrders\", fields: [userId], references: [id])\n  userId String\n}\n",
+  "inlineSchemaHash": "f09701d55d3a7eab8cb01c2e53ea5e223376853218b386e8c038f8e9f7529050",
   "copyEngine": true,
   "runtimeDataModel": {
     "models": {},
