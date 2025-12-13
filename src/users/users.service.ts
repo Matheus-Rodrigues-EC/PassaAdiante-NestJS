@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 // import JWTService from '..auth/jwt/jwt.service';
