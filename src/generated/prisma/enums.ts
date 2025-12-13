@@ -9,6 +9,39 @@
 * 🟢 You can import this file directly.
 */
 
+export const ItemCategory = {
+  BOOK: 'BOOK',
+  NOTEBOOK: 'NOTEBOOK',
+  BACKPACK: 'BACKPACK',
+  PENCIL: 'PENCIL',
+  PEN: 'PEN',
+  ERASER: 'ERASER',
+  PENCIL_CASE: 'PENCIL_CASE',
+  UNIFORM: 'UNIFORM',
+  SHOES: 'SHOES',
+  SCHOOL_SUPPLIES: 'SCHOOL_SUPPLIES'
+} as const
+
+export type ItemCategory = (typeof ItemCategory)[keyof typeof ItemCategory]
+
+
+export const ItemCondition = {
+  NEW: 'NEW',
+  GOOD: 'GOOD',
+  FAIR: 'FAIR'
+} as const
+
+export type ItemCondition = (typeof ItemCondition)[keyof typeof ItemCondition]
+
+
+export const ItemAvailability = {
+  AVAILABLE: 'AVAILABLE',
+  DONATED: 'DONATED'
+} as const
+
+export type ItemAvailability = (typeof ItemAvailability)[keyof typeof ItemAvailability]
+
+
 export const UserType = {
   ADMIN: 'ADMIN',
   DONOR: 'DONOR',

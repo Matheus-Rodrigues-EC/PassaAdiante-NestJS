@@ -684,7 +684,14 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const ItemScalarFieldEnum = {
   id: 'id',
-  userId: 'userId'
+  userId: 'userId',
+  name: 'name',
+  description: 'description',
+  category: 'category',
+  condition: 'condition',
+  availability: 'availability',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof ItemScalarFieldEnum]
@@ -767,6 +774,48 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ItemCategory'
+ */
+export type EnumItemCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'ItemCategory[]'
+ */
+export type ListEnumItemCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ItemCondition'
+ */
+export type EnumItemConditionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemCondition'>
+    
+
+
+/**
+ * Reference to a field of type 'ItemCondition[]'
+ */
+export type ListEnumItemConditionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemCondition[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ItemAvailability'
+ */
+export type EnumItemAvailabilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemAvailability'>
+    
+
+
+/**
+ * Reference to a field of type 'ItemAvailability[]'
+ */
+export type ListEnumItemAvailabilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemAvailability[]'>
     
 
 
