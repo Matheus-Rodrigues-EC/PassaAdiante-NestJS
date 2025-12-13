@@ -27,16 +27,37 @@ export type AggregateItem = {
 export type ItemMinAggregateOutputType = {
   id: string | null
   userId: string | null
+  name: string | null
+  description: string | null
+  category: $Enums.ItemCategory | null
+  condition: $Enums.ItemCondition | null
+  availability: $Enums.ItemAvailability | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ItemMaxAggregateOutputType = {
   id: string | null
   userId: string | null
+  name: string | null
+  description: string | null
+  category: $Enums.ItemCategory | null
+  condition: $Enums.ItemCondition | null
+  availability: $Enums.ItemAvailability | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ItemCountAggregateOutputType = {
   id: number
   userId: number
+  name: number
+  description: number
+  category: number
+  condition: number
+  availability: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -44,16 +65,37 @@ export type ItemCountAggregateOutputType = {
 export type ItemMinAggregateInputType = {
   id?: true
   userId?: true
+  name?: true
+  description?: true
+  category?: true
+  condition?: true
+  availability?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ItemMaxAggregateInputType = {
   id?: true
   userId?: true
+  name?: true
+  description?: true
+  category?: true
+  condition?: true
+  availability?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ItemCountAggregateInputType = {
   id?: true
   userId?: true
+  name?: true
+  description?: true
+  category?: true
+  condition?: true
+  availability?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -132,6 +174,13 @@ export type ItemGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type ItemGroupByOutputType = {
   id: string
   userId: string
+  name: string
+  description: string | null
+  category: $Enums.ItemCategory
+  condition: $Enums.ItemCondition
+  availability: $Enums.ItemAvailability
+  createdAt: Date
+  updatedAt: Date
   _count: ItemCountAggregateOutputType | null
   _min: ItemMinAggregateOutputType | null
   _max: ItemMaxAggregateOutputType | null
@@ -158,12 +207,26 @@ export type ItemWhereInput = {
   NOT?: Prisma.ItemWhereInput | Prisma.ItemWhereInput[]
   id?: Prisma.StringFilter<"Item"> | string
   userId?: Prisma.StringFilter<"Item"> | string
+  name?: Prisma.StringFilter<"Item"> | string
+  description?: Prisma.StringNullableFilter<"Item"> | string | null
+  category?: Prisma.EnumItemCategoryFilter<"Item"> | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFilter<"Item"> | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFilter<"Item"> | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFilter<"Item"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Item"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type ItemOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  category?: Prisma.SortOrder
+  condition?: Prisma.SortOrder
+  availability?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -173,12 +236,26 @@ export type ItemWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ItemWhereInput[]
   NOT?: Prisma.ItemWhereInput | Prisma.ItemWhereInput[]
   userId?: Prisma.StringFilter<"Item"> | string
+  name?: Prisma.StringFilter<"Item"> | string
+  description?: Prisma.StringNullableFilter<"Item"> | string | null
+  category?: Prisma.EnumItemCategoryFilter<"Item"> | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFilter<"Item"> | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFilter<"Item"> | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFilter<"Item"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Item"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
 export type ItemOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  category?: Prisma.SortOrder
+  condition?: Prisma.SortOrder
+  availability?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ItemCountOrderByAggregateInput
   _max?: Prisma.ItemMaxOrderByAggregateInput
   _min?: Prisma.ItemMinOrderByAggregateInput
@@ -190,40 +267,96 @@ export type ItemScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ItemScalarWhereWithAggregatesInput | Prisma.ItemScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Item"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Item"> | string
+  name?: Prisma.StringWithAggregatesFilter<"Item"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"Item"> | string | null
+  category?: Prisma.EnumItemCategoryWithAggregatesFilter<"Item"> | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionWithAggregatesFilter<"Item"> | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityWithAggregatesFilter<"Item"> | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Item"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Item"> | Date | string
 }
 
 export type ItemCreateInput = {
   id?: string
+  name: string
+  description?: string | null
+  category: $Enums.ItemCategory
+  condition: $Enums.ItemCondition
+  availability: $Enums.ItemAvailability
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutItemsInput
 }
 
 export type ItemUncheckedCreateInput = {
   id?: string
   userId: string
+  name: string
+  description?: string | null
+  category: $Enums.ItemCategory
+  condition: $Enums.ItemCondition
+  availability: $Enums.ItemAvailability
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ItemUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumItemCategoryFieldUpdateOperationsInput | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFieldUpdateOperationsInput | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFieldUpdateOperationsInput | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutItemsNestedInput
 }
 
 export type ItemUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumItemCategoryFieldUpdateOperationsInput | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFieldUpdateOperationsInput | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFieldUpdateOperationsInput | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ItemCreateManyInput = {
   id?: string
   userId: string
+  name: string
+  description?: string | null
+  category: $Enums.ItemCategory
+  condition: $Enums.ItemCondition
+  availability: $Enums.ItemAvailability
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ItemUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumItemCategoryFieldUpdateOperationsInput | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFieldUpdateOperationsInput | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFieldUpdateOperationsInput | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ItemUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumItemCategoryFieldUpdateOperationsInput | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFieldUpdateOperationsInput | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFieldUpdateOperationsInput | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ItemListRelationFilter = {
@@ -239,16 +372,37 @@ export type ItemOrderByRelationAggregateInput = {
 export type ItemCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  condition?: Prisma.SortOrder
+  availability?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ItemMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  condition?: Prisma.SortOrder
+  availability?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ItemMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  condition?: Prisma.SortOrder
+  availability?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ItemCreateNestedManyWithoutUserInput = {
@@ -293,12 +447,38 @@ export type ItemUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.ItemScalarWhereInput | Prisma.ItemScalarWhereInput[]
 }
 
+export type EnumItemCategoryFieldUpdateOperationsInput = {
+  set?: $Enums.ItemCategory
+}
+
+export type EnumItemConditionFieldUpdateOperationsInput = {
+  set?: $Enums.ItemCondition
+}
+
+export type EnumItemAvailabilityFieldUpdateOperationsInput = {
+  set?: $Enums.ItemAvailability
+}
+
 export type ItemCreateWithoutUserInput = {
   id?: string
+  name: string
+  description?: string | null
+  category: $Enums.ItemCategory
+  condition: $Enums.ItemCondition
+  availability: $Enums.ItemAvailability
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ItemUncheckedCreateWithoutUserInput = {
   id?: string
+  name: string
+  description?: string | null
+  category: $Enums.ItemCategory
+  condition: $Enums.ItemCondition
+  availability: $Enums.ItemAvailability
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ItemCreateOrConnectWithoutUserInput = {
@@ -333,22 +513,57 @@ export type ItemScalarWhereInput = {
   NOT?: Prisma.ItemScalarWhereInput | Prisma.ItemScalarWhereInput[]
   id?: Prisma.StringFilter<"Item"> | string
   userId?: Prisma.StringFilter<"Item"> | string
+  name?: Prisma.StringFilter<"Item"> | string
+  description?: Prisma.StringNullableFilter<"Item"> | string | null
+  category?: Prisma.EnumItemCategoryFilter<"Item"> | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFilter<"Item"> | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFilter<"Item"> | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFilter<"Item"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Item"> | Date | string
 }
 
 export type ItemCreateManyUserInput = {
   id?: string
+  name: string
+  description?: string | null
+  category: $Enums.ItemCategory
+  condition: $Enums.ItemCondition
+  availability: $Enums.ItemAvailability
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ItemUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumItemCategoryFieldUpdateOperationsInput | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFieldUpdateOperationsInput | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFieldUpdateOperationsInput | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ItemUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumItemCategoryFieldUpdateOperationsInput | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFieldUpdateOperationsInput | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFieldUpdateOperationsInput | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ItemUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumItemCategoryFieldUpdateOperationsInput | $Enums.ItemCategory
+  condition?: Prisma.EnumItemConditionFieldUpdateOperationsInput | $Enums.ItemCondition
+  availability?: Prisma.EnumItemAvailabilityFieldUpdateOperationsInput | $Enums.ItemAvailability
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -356,27 +571,55 @@ export type ItemUncheckedUpdateManyWithoutUserInput = {
 export type ItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  name?: boolean
+  description?: boolean
+  category?: boolean
+  condition?: boolean
+  availability?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["item"]>
 
 export type ItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  name?: boolean
+  description?: boolean
+  category?: boolean
+  condition?: boolean
+  availability?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["item"]>
 
 export type ItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  name?: boolean
+  description?: boolean
+  category?: boolean
+  condition?: boolean
+  availability?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["item"]>
 
 export type ItemSelectScalar = {
   id?: boolean
   userId?: boolean
+  name?: boolean
+  description?: boolean
+  category?: boolean
+  condition?: boolean
+  availability?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId", ExtArgs["result"]["item"]>
+export type ItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "description" | "category" | "condition" | "availability" | "createdAt" | "updatedAt", ExtArgs["result"]["item"]>
 export type ItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -395,6 +638,13 @@ export type $ItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
+    name: string
+    description: string | null
+    category: $Enums.ItemCategory
+    condition: $Enums.ItemCondition
+    availability: $Enums.ItemAvailability
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["item"]>
   composites: {}
 }
@@ -821,6 +1071,13 @@ export interface Prisma__ItemClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface ItemFieldRefs {
   readonly id: Prisma.FieldRef<"Item", 'String'>
   readonly userId: Prisma.FieldRef<"Item", 'String'>
+  readonly name: Prisma.FieldRef<"Item", 'String'>
+  readonly description: Prisma.FieldRef<"Item", 'String'>
+  readonly category: Prisma.FieldRef<"Item", 'ItemCategory'>
+  readonly condition: Prisma.FieldRef<"Item", 'ItemCondition'>
+  readonly availability: Prisma.FieldRef<"Item", 'ItemAvailability'>
+  readonly createdAt: Prisma.FieldRef<"Item", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Item", 'DateTime'>
 }
     
 
