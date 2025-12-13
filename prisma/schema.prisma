@@ -73,6 +73,8 @@ model Item {
   availability ItemAvailability
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  @@map("item")
 }
 
 model Order {
