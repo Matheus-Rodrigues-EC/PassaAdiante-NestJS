@@ -1,11 +1,42 @@
-## Possíveis Usos da Solução
+<h1 align="center">✨ Possíveis Usos da Solução</h1>
 
-### Como este projeto ajuda no mundo real
+<p align="center">
+  <a href="../README.md">⬅ Voltar ao Início</a>
+</p>
 
-- **Estudantes em necessidade:** Um aluno de escola pública que não pode comprar materiais escolares (exemplo: mochilas, livros, etc.) encontra doações próximas e solicita o que precisa gratuitamente, evitando ficar para trás ou abandonar os estudos por falta de material.
-- **Famílias com itens sobrando:** Uma família com mochilas e livros usados em bom estado lista rapidamente os itens, garantindo que cheguem a estudantes que irão reutilizá-los em vez de deixá-los parados ou descartá-los.
-- **Escolas e ONGs como pontos de coleta:** Uma escola ou ONG local atua como ponto de coleta/entrega, organizando doações, verificando o estado e direcionando-as a estudantes, aumentando confiança e alcance na comunidade.
-- **Pequenas papelarias:** Uma papelaria de bairro pode doar estoque não vendido ou oferecer descontos para usuários da plataforma, fortalecendo laços com a comunidade e atraindo público engajado socialmente.
-- **Programas municipais:** Programas de educação ou assistência social usam o catálogo e os filtros da plataforma para distribuir materiais em períodos de volta às aulas, tornando as campanhas mais ágeis e transparentes.
+---
 
-Estes cenários mostram como conectar doadores e receptores pode reduzir custos, cortar desperdício e incentivar inclusão educacional e economia circular.
+## Aplicações práticas no mundo real
+
+Este projeto foi concebido para atender diferentes contextos sociais e institucionais, promovendo **reaproveitamento de materiais escolares**, **inclusão educacional** e **economia circular**.
+
+### 🎒 Estudantes em situação de vulnerabilidade
+
+Alunos da rede pública ou de baixa renda podem acessar a plataforma para **encontrar doações próximas** e **solicitar materiais escolares essenciais**, como mochilas, livros e cadernos. Isso reduz o risco de evasão escolar e dificuldades de aprendizado causadas pela falta de recursos.
+
+### 🏠 Famílias com materiais sobrando
+
+Famílias que possuem materiais escolares em bom estado podem **cadastrar itens rapidamente** na plataforma, garantindo que esses recursos sejam reutilizados por quem realmente precisa, evitando o descarte inadequado ou o acúmulo desnecessário.
+
+### 🏫 Escolas e ONGs como pontos de apoio
+
+Instituições educacionais e organizações não governamentais podem atuar como **pontos de coleta e entrega**, organizando as doações, avaliando o estado dos materiais e intermediando a distribuição para estudantes cadastrados, aumentando a confiança e o alcance da iniciativa.
+
+### 🛍️ Pequenas papelarias e comércios locais
+
+Papelarias de bairro podem **doar itens de estoque não vendidos**, apoiar campanhas solidárias ou oferecer **descontos para usuários da plataforma**, fortalecendo o relacionamento com a comunidade e ampliando sua visibilidade social.
+
+### 🏛️ Programas municipais e ações públicas
+
+Órgãos públicos e programas sociais podem utilizar o **catálogo de itens, filtros e sistema de solicitações (Orders)** para organizar campanhas de volta às aulas, tornando a distribuição de materiais mais **ágil, transparente e rastreável**.
+
+---
+
+### Impacto gerado
+
+Esses cenários demonstram como a conexão entre doadores e receptores, mediada por tecnologia, pode:
+
+* Reduzir custos para famílias e instituições;
+* Diminuir o desperdício de materiais em bom estado;
+* Incentivar práticas sustentáveis e consumo consciente;
+* Promover inclusão educacional e impacto social positivo.
