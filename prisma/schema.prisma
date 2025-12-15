@@ -60,7 +60,6 @@ model User {
   @@map("user")
 }
 
-
 model Item {
   id     String @id @default(uuid())
   user   User   @relation("UserItems", fields: [userId], references: [id])
@@ -71,14 +70,26 @@ model Item {
   category     ItemCategory
   condition    ItemCondition
   availability ItemAvailability
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  orders       Order[]          @relation("ItemOrders")
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
 
   @@map("item")
 }
 
+enum OrderStatus {
+  PENDING
+  APPROVED
+  COMPLETED
+  CANCELED
+}
+
 model Order {
-  id     String @id @default(uuid())
+  id     String      @id @default(uuid())
+  status OrderStatus
+
   user   User   @relation("UserOrders", fields: [userId], references: [id])
   userId String
+  item   Item   @relation("ItemOrders", fields: [itemId], references: [id])
+  itemId String
 }
