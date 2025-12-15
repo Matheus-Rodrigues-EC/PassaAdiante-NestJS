@@ -1,70 +1,144 @@
-<h1 align='center'>Comandos básicos do Git</h1>
+<h1 align="center">📘 Comandos Básicos do Git</h1>
 
-#### [Início](../README.md)
+<p align="center">
+  <a href="../README.md">⬅ Voltar ao Início</a>
+</p>
 
-## Comandos Git.
+---
 
+## 🔁 Fluxo de Trabalho Mais Comum
 
-#### Resumo prático do fluxo mais comum
+```bash
+git status
+git add .
+git commit -m "feat: nova funcionalidade"
+git pull
+git push
+```
 
-1. **git status**
-2. **git add .**
-3. **git commit -m "feat: nova funcionalidade"**
-4. **git pull**
-5. **git push**
+Esse é o fluxo básico utilizado no dia a dia para versionar e enviar alterações ao repositório remoto.
 
-#### Configuração inicial
-- **git config --global user.name "Seu Nome"** - Define o nome que aparecerá nos commits.
-- **git config --global user.email "seu@email.com"** - Define o e-mail associado aos commits.
-- **git config --list** - Mostra todas as configurações do Git.
+---
 
-#### Criar ou obter um repositório
+## ⚙️ Configuração Inicial
 
-- **git init** - Inicializa um repositório Git na pasta atual.
-- **git clone URL_DO_REPOSITORIO** - Clona um repositório remoto para sua máquina.
+```bash
+git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
+git config --list
+```
 
-#### Status e histórico
+* Define o nome e o e-mail associados aos commits
+* Lista todas as configurações ativas do Git
 
-- **git status** - Mostra o estado atual do repositório (arquivos modificados, staged, etc).
-  - <span style="color: red;">Vermelhos</span><span> - Arquivos não monitorados/adicionados para commit.</span> 
-  - <span style="color: green;">Verdes</span><span> - Arquivos já prontos já preparados para o próximo commit.</span>
-- **git log** - Exibe o histórico de commits.
+---
 
-#### Trabalhando com arquivos
+## 📦 Criar ou Obter um Repositório
 
-- **git add .** - Adiciona todos os arquivos modificados.
-- **git commit -m "mensagem do commit"** - Cria um commit com a mensagem informada.
+```bash
+git init
+git clone URL_DO_REPOSITORIO
+```
 
-#### Branches (ramificações)
+* `git init` → Inicializa um novo repositório local
+* `git clone` → Clona um repositório remoto existente
 
-- **git branch** - Lista todas as branches.
-- **git branch _nome-da-branch_** - Cria uma nova branch.
-- **git checkout _nome-da-branch_** - Muda para outra branch.
-- **git checkout -b _nome-da-branch_** - Cria e já muda para a nova branch.
-- **git merge _nome-da-branch_** - Mescla outra branch na branch atual.
+---
 
-#### Repositório remoto
+## 📊 Status e Histórico
 
-- **git remote -v** - Mostra os repositórios remotos configurados.
-- **git pull** - Baixa e mescla alterações do repositório remoto.
-- **git push** - Envia commits locais para o repositório remoto.
-- **git push -u origin main** - Define a branch main como padrão no remoto.
-- **git push origin _branch_** - Envio para o repositório remoto todas as alteração preparadas com commits.
+```bash
+git status
+git log
+```
 
-#### Desfazendo coisas (muito importante)
+**Legenda do `git status`:**
 
-- **git restore arquivo.txt** - Descarta alterações locais de um arquivo.
-- **git restore --staged arquivo.txt** - Remove o arquivo da área de stage.
-- **git reset --soft HEAD~1** - Desfaz o último commit, mantendo as alterações.
-- **git reset --hard HEAD~1** - Desfaz o commit e apaga as alterações. ⚠️
+* 🔴 Vermelho → Arquivos modificados não adicionados ao stage
+* 🟢 Verde → Arquivos prontos para commit
 
-#### Inspeção e comparação
+---
 
-- **git diff** - Mostra diferenças entre arquivos modificados e o último commit.
-- **git diff --staged** - Mostra diferenças do que já está no stage.
+## 📝 Trabalhando com Arquivos
 
-#### Comandos úteis extras
+```bash
+git add .
+git commit -m "mensagem do commit"
+```
 
-- **git stash** - Guarda alterações temporariamente.
-- **git stash pop** - Restaura as alterações guardadas.
-- **Restaura as alterações guardadas.** - Lista as tags (versões).
+* Adiciona arquivos ao stage
+* Cria um commit com mensagem descritiva
+
+---
+
+## 🌿 Branches (Ramificações)
+
+```bash
+git branch
+git branch nome-da-branch
+git checkout nome-da-branch
+git checkout -b nome-da-branch
+git merge nome-da-branch
+```
+
+---
+
+## 🌐 Repositórios Remotos
+
+```bash
+git remote -v
+git pull
+git push
+git push -u origin main
+git push origin nome-da-branch
+```
+
+---
+
+## ♻️ Desfazendo Alterações (Atenção ⚠️)
+
+```bash
+git restore arquivo.txt
+git restore --staged arquivo.txt
+git reset --soft HEAD~1
+git reset --hard HEAD~1
+```
+
+> ⚠️ O comando `--hard` remove alterações de forma permanente.
+
+---
+
+## 🔍 Inspeção e Comparação
+
+```bash
+git diff
+git diff --staged
+```
+
+---
+
+## 🧰 Comandos Úteis Extras
+
+```bash
+git stash
+git stash pop
+git tag
+```
+
+* `git stash` → Guarda alterações temporariamente
+* `git stash pop` → Restaura alterações guardadas
+* `git tag` → Lista versões do projeto
+
+---
+
+## 📌 Boas Práticas
+
+* Utilize mensagens de commit claras e padronizadas
+* Faça commits pequenos e frequentes
+* Sempre execute `git pull` antes de iniciar novas alterações
+
+---
+
+<p align="center">
+  📘 Versionar bem é escrever a história do projeto com clareza
+</p>

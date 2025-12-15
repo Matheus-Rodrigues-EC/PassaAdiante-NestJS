@@ -104,7 +104,9 @@ export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof Item
 
 export const OrderScalarFieldEnum = {
   id: 'id',
-  userId: 'userId'
+  status: 'status',
+  userId: 'userId',
+  itemId: 'itemId'
 } as const
 
 export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]

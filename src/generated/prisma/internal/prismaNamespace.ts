@@ -699,7 +699,9 @@ export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof Item
 
 export const OrderScalarFieldEnum = {
   id: 'id',
-  userId: 'userId'
+  status: 'status',
+  userId: 'userId',
+  itemId: 'itemId'
 } as const
 
 export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
@@ -816,6 +818,20 @@ export type EnumItemAvailabilityFieldRefInput<$PrismaModel> = FieldRefInputType<
  * Reference to a field of type 'ItemAvailability[]'
  */
 export type ListEnumItemAvailabilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemAvailability[]'>
+    
+
+
+/**
+ * Reference to a field of type 'OrderStatus'
+ */
+export type EnumOrderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OrderStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'OrderStatus[]'
+ */
+export type ListEnumOrderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OrderStatus[]'>
     
 
 
