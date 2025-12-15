@@ -41,7 +41,7 @@ enum UserType {
   ADMIN
   DONOR
   RECEIVER
-  INTITUITION
+  INSTITUTION
 }
 
 model User {

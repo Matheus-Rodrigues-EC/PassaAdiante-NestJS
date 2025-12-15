@@ -46,7 +46,7 @@ export const UserType = {
   ADMIN: 'ADMIN',
   DONOR: 'DONOR',
   RECEIVER: 'RECEIVER',
-  INTITUITION: 'INTITUITION'
+  INSTITUTION: 'INSTITUTION'
 } as const
 
 export type UserType = (typeof UserType)[keyof typeof UserType]
