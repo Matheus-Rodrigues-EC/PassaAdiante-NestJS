@@ -19,3 +19,4 @@
 1. [Manual de instalação](./docs/instalation-manual.md)
 2. [Motivação](./docs/motivation.md)
 3. [Comandos básicos do Git](./docs/basics-git-commands.md)
+4. [Possíveis usos da nossa solução](./docs/possible-users-of-solution.md)
