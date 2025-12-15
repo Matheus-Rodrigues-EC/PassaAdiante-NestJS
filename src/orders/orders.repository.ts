@@ -27,4 +27,35 @@ export class OrdersRepository {
             },
         });
     }
+
+    async findAll(): Promise<Order[]> {
+        return await this.prisma.order.findMany({
+            include: {
+                user: true,
+                item: true,
+            },
+        });
+    }
+
+    async findOne(id: string): Promise<Order | null> {
+        return await this.prisma.order.findUnique({
+            where: { id },
+            include: {
+                user: true,
+                item: true,
+            },
+        });
+    }
+
+    async update(id: string, updateOrderDto: UpdateOrderDto): Promise<Order> {
+        return await this.prisma.order.update({
+            where: { id },
+            data: updateOrderDto,
+        });
+    }
+
+    async remove(id: string): Promise<Order> {
+      return await this.prisma.order.delete({ where: { id } });
+    }
+
 }
