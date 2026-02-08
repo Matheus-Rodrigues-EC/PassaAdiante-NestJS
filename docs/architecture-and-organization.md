@@ -37,6 +37,29 @@ PASSA-ADIANTE-NEST-JS/
 
 ---
 
+## 📚 Banco de Dados
+
+### O que é o projeto físico de banco de dados?
+
+O **Modelo Físico do Banco de Dados** é quando o modelo sai do papel e passa a existir de forma concreta em um SGBD 
+(Sistema Gerenciador de Banco de Dados). É nessa etapa que tabelas, colunas, e todos os tipos de dados são criados,
+juntamente com suas restrições e regras, que conhecemos como **Constraints**.
+
+Ou seja, se os modelos conceitual e lógico mostram como os dados se relacionam, o modelo físico define como esses dados serão armazenados de verdade no sistema.
+
+##### ❓ Mas afinal, qual é a real importância para quem está aprendendo?
+
+- Ajuda a entender como as informações são guardadas e recuperadas.
+- Evita problemas de desempenho e duplicação de dados.
+- Facilita a manutenção e evolução do sistema (Escalabilidade).
+- Ensina a pensar na estrutura antes de sair *codando*.
+
+Mesmo em projetos simples, um bom modelo físico faz com que a aplicação fique mais organizada e confiável.
+Por isso é tão importante aprender e não pular esta etapa de aprendizagem, afinal, esse processo é
+fundamental para quem quer trabalhar com desenvolvimento de software.
+
+---
+
 ## 🧠 Organização por Camadas
 
 A aplicação segue o padrão **Controller → Service → Repository**, promovendo separação de responsabilidades e baixo acoplamento.
