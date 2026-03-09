@@ -67,7 +67,6 @@ sequenceDiagram
   A->>D: Atualiza status
   A->>U: Confirmação
 ```
-
 ---
 
 ## 🧪 Testes
@@ -76,7 +75,6 @@ sequenceDiagram
 npm run test
 ```
 
----
 
 ## 🤝 Contribuição
 
