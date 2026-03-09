@@ -136,6 +136,188 @@ test/
 
 ---
 
+## 🗺️ SiteMap
+
+```text
+
+Landing Page
+│
+├── Cadastro
+├── Login
+│   └── Recuperar Senha
+│
+├── Dashboard
+│   ├── Perfil
+│   │   └── Endereço
+│   ├── Catálogo
+│   │   └── Detalhes do Item
+│   ├── Cadastrar Item
+│   ├── Minhas Solicitações
+│   │   └── Detalhes do Pedido
+│   └── Minhas Doações
+│       └── Página do Item
+│
+├── Dashboard Admin
+│   ├── Itens
+│   ├── Pedidos
+│   └── Usuários
+│
+└── Suporte
+    ├── Quem Somos
+    ├── Nossa Missão
+    └── Fale Conosco
+
+```
+
+---
+
+---
+
+## 🎨 Como prototipar uma WireFrame
+
+#### 1. Definir o objetivo da tela
+  
+Antes de desenhar qualquer interface, é importante entender:
+- Qual problema a tela resolve
+- Qual ação o usuário precisa realizar
+
+Por exemplo, no sistema PassaAdiante, uma tela pode ter como objetivo:
+- Cadastrar um item para doação
+- Visualizar itens disponíveis
+- Solicitar um item
+
+#### 2. Criar a estrutura básica da página
+
+A maioria das interfaces segue uma estrutura padrão:
+
+    ---------------------------------
+    Header (logo / navegação)
+    ---------------------------------
+    Menu lateral (opcional)
+    ---------------------------------
+    Conteúdo principal
+    ---------------------------------
+    Rodapé
+    ---------------------------------
+
+Essa estrutura ajuda o usuário a **entender rapidamente onde está cada tipo de informação**.
+
+
+#### 3. Posicionar os elementos principais
+
+Depois da estrutura geral, devem ser inseridos os componentes da tela:
+
+Exemplo de wireframe simples de catálogo:
+
+    ------------------------------------------------
+    Logo           Barra de busca        Perfil
+    ------------------------------------------------
+    Menu
+
+    Categorias
+
+    ------------------------------------------------
+    Item 1        Item 2        Item 3
+    Imagem        Imagem        Imagem
+    Título        Título        Título
+    Botão ver     Botão ver     Botão ver
+    ------------------------------------------------
+
+Nesse momento **não se pensa em cores ou estilo**, apenas na organização.
+
+#### 4. Definir os fluxos de interação
+
+Um wireframe também ajuda a representar **como o usuário navega entre as páginas**.
+
+    Exemplo de fluxo:
+
+    Catálogo
+      ↓
+    Detalhes do Item
+      ↓
+    Solicitar Item
+      ↓
+    Confirmação
+
+Esse fluxo ajuda a identificar:
+- Etapas desnecessárias
+- Problemas de navegação
+- Possíveis melhorias na experiência.
+
+#### 5. Testar o wireframe
+
+Uma prática muito comum é pedir para alguém tentar realizar uma tarefa usando o protótipo.
+
+Por exemplo:
+
+    “Você consegue descobrir como solicitar um item?”
+
+Se a pessoa **não consegue entender a interface**, isso indica que o design precisa ser melhorado.
+
+---
+
+---
+
+## 🎯👤 Como o design centrado no usuário melhora a qualidade dos sistemas?
+
+#### 1. Facilidade de uso
+
+Interfaces intuitivas permitem que o usuário:
+- Aprenda rapidamente
+- Cometa menos erros
+- Realize tarefas com mais eficiência
+- Reduza a carga cognitiva
+
+Isso reduz frustração e melhora a experiência geral.
+
+#### 2. Acessibilidade 
+
+O design centrado no usuário também considera **diferentes perfis de usuários**, incluindo:
+- Idosos
+- Pessoas com deficiência visual
+- Pessoas com pouca experiência digital
+
+Isso torna os sistemas mais inclusivos.
+
+#### 3. Redução de erros
+
+Interfaces mal projetadas podem levar a:
+
+- Erros de preenchimento
+- Perda de dados
+- Ações feitas por engano
+
+Ao estudar o comportamento do usuário, é possível **prevenir esses problemas no design**.
+
+#### 4. Maior satisfação do usuário
+
+Quando uma interface é clara e eficiente, o usuário sente que o sistema **funciona a seu favor**, e não contra ele.
+
+Isso aumenta:
+- Confiança no sistema
+- Engajamento
+- Adoção da tecnologia.
+  
+#### 5. Impacto da Interface Humano-Computador (IHC) na sociedade
+
+A interface entre humanos e computadores está presente em praticamente todas as atividades do cotidiano, como:
+- Aplicativos bancários
+- Redes sociais
+- Sistemas de saúde
+- Plataformas educacionais
+- Serviços públicos digitais
+
+Se essas interfaces forem mal projetadas, milhões de pessoas podem ter dificuldades para acessar serviços essenciais.
+
+Por outro lado, quando os princípios de **IHC e design centrado no usuário são aplicados corretamente**, a tecnologia se torna:
+- Mais acessível
+- Mais eficiente
+- Mais humana
+
+Isso contribui para uma sociedade mais conectada e com melhor acesso à informação e aos serviços digitais.
+
+---
+
 ## 📌 Considerações Finais
 
 A arquitetura adotada permite evolução contínua do projeto, facilitando a adição de novos módulos, testes e integrações externas, sem comprometer a estabilidade do sistema.
