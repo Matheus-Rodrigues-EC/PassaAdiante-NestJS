@@ -1,97 +1,109 @@
-<p align="center">
-  <img src="./public/logo.png" width="220" alt="Passe Adiante Logo" />
-</p>
+<p align="center"><img src="./public/logo.png" width="180" alt="Logo Passe Adiante" /></p>
+<h1 align="center">Passe Adiante - API</h1>
+<p align="center"><strong>NestJS, Prisma e PostgreSQL para uma rede solidária de materiais escolares.</strong></p>
 
-<h1 align="center">Passe Adiante</h1>
-<h3 align="center">Um caderno a menos parado, um estudante a mais preparado.</h3>
+## Sobre o projeto
 
-<p align="center">
-  <img src="https://img.shields.io/badge/status-em%20desenvolvimento-yellow" />
-  <img src="https://img.shields.io/badge/node-%3E%3D18-green" />
-  <img src="https://img.shields.io/badge/nestjs-v10-red" />
-  <img src="https://img.shields.io/badge/prisma-orm-blueviolet" />
-  <img src="https://img.shields.io/badge/license-MIT-blue" />
-</p>
+Esta API sustenta o MVP Passe Adiante, plataforma que conecta doadores a estudantes e instituições que necessitam de materiais escolares. Ela implementa autenticação, autorização por perfil, usuários, catálogo de itens e acompanhamento de solicitações.
 
----
+## Tecnologias
 
-## 📌 Sobre o Projeto
+- **TypeScript e NestJS 11:** arquitetura modular, injeção de dependências e contratos HTTP claros.
+- **Prisma 7:** modelo tipado e acesso seguro ao PostgreSQL.
+- **PostgreSQL 16:** integridade relacional entre usuários, itens e pedidos.
+- **JWT e bcrypt:** sessão stateless e senhas armazenadas por hash.
+- **class-validator:** validação e limpeza automática das entradas.
+- **Jest:** testes unitários das regras centrais.
 
-O **Passe Adiante** é uma plataforma web desenvolvida para conectar doadores e estudantes em situação de vulnerabilidade econômica, promovendo o reaproveitamento de materiais escolares e incentivando práticas de consumo consciente e economia circular.
+## Arquitetura
 
----
-
-## 📑 Índice
-
-* [🎯 Motivação](./docs/motivation.md)
-* [🏗 Arquitetura e Organização](./docs/architecture-and-organization.md)
-* [✨ Possíveis usos da nossa solução](./docs/possible-users-of-solution.md)
-* [🛠 Manual de Instalação](./docs/instalation-manual.md)
-* [🔁 Comandos Básicos do Git](./docs/basics-git-commands.md)
-* [🧪 Testes](#-testes)
-* [🤝 Contribuição](#-contribuição)
-* [📄 Licença](#-licença)
-
----
-
-## 🧩 Arquitetura da Aplicação
-```mermaid
-graph TD
-  Client[Usuário / Frontend]
-  Controller[Controller]
-  Service[Service]
-  Repository[Repository]
-  Prisma[(Prisma ORM)]
-  Database[(PostgreSQL)]
-
-  Client --> Controller
-  Controller --> Service
-  Service --> Repository
-  Repository --> Prisma
-  Prisma --> Database
+```text
+src/
+├── auth/       # Login, JWT, usuário atual e autorização por perfil
+├── users/      # Cadastro e gestão de usuários
+├── item/       # Catálogo e doações
+├── orders/     # Solicitações e transições de status
+├── prisma/     # Conexão e ciclo de vida do banco
+└── main.ts     # ValidationPipe, CORS e bootstrap
+prisma/
+├── migrations/ # Estrutura versionada do banco
+├── schema.prisma
+└── seed.ts     # Dados locais demonstrativos
 ```
 
----
+Cada domínio segue `Controller → Service → Repository`. Controllers tratam HTTP, services aplicam regras de negócio e repositories isolam o Prisma.
 
-## 🔄 Fluxo de Doação de Material
+## Instalação e execução
 
-```mermaid
-sequenceDiagram
-  participant U as Usuário
-  participant A as Aplicação
-  participant D as Banco de Dados
+Requisitos: Node.js 20+, Docker Desktop (recomendado), npm ou pnpm.
 
-  U->>A: Cadastra item
-  A->>D: Salva item
-  U->>A: Solicita item
-  A->>D: Atualiza status
-  A->>U: Confirmação
+```bash
+git clone https://github.com/Matheus-Rodrigues-EC/PassaAdiante-NestJS.git
+cd PassaAdiante-NestJS
+cp .env.example .env
+npm install
+docker compose up -d
+npx prisma generate
+npx prisma migrate deploy
+npx prisma db seed
+npm run start:dev
 ```
----
 
-## 🧪 Testes
+A API estará em `http://localhost:3000` e o PostgreSQL em `localhost:5432`. Para usar uma instalação própria do PostgreSQL, ajuste `DATABASE_URL` no `.env`.
+
+### Testes e qualidade
 
 ```bash
 npm run test
+npm run build
+npm run lint
 ```
 
+## Endpoints principais
 
-## 🤝 Contribuição
+| Método | Rota | Acesso | Finalidade |
+|---|---|---|---|
+| POST | `/users` | Público | Criar conta |
+| POST | `/auth/login` | Público | Obter JWT e usuário sanitizado |
+| GET | `/users/me` | Autenticado | Consultar perfil |
+| GET | `/users` | Admin | Listar usuários |
+| GET | `/items` | Público | Catálogo com filtros |
+| POST | `/items` | Autenticado | Cadastrar doação |
+| PATCH/DELETE | `/items/:id` | Doador/Admin | Gerenciar item |
+| POST | `/orders` | Autenticado | Solicitar item |
+| GET | `/orders/mine` | Autenticado | Solicitações feitas |
+| GET | `/orders/received` | Autenticado | Pedidos recebidos |
+| PATCH | `/orders/:id` | Envolvido/Admin | Atualizar status |
+| GET | `/orders` | Admin | Listar todos os pedidos |
 
-1. Faça um fork do projeto
-2. Crie uma branch (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -m "feat: descrição"`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
+Filtros de `/items`: `search`, `category`, `condition`, `availability` e `userId`.
 
----
+## Regras e segurança
 
-## 📄 Licença
+- Senhas nunca são retornadas pela API.
+- E-mails duplicados recebem conflito HTTP 409.
+- Somente o proprietário ou administrador altera uma doação.
+- Um usuário não pode solicitar a própria doação nem repetir uma solicitação.
+- Somente itens disponíveis podem ser solicitados.
+- Ao concluir o pedido, o item passa a `DONATED`; cancelamentos o tornam disponível.
+- Rotas administrativas exigem JWT e perfil `ADMIN`.
 
-Este projeto está sob a licença **MIT**.
+## Como utilizar a aplicação
 
----
+O acesso cotidiano ocorre pelo frontend. Uma pessoa cria a conta, cadastra um material ou consulta o catálogo. Ao solicitar um item, o pedido fica pendente até o doador avaliar. Depois da combinação de entrega, o pedido é concluído e o item deixa de aparecer como disponível.
 
-<p align="center">
-  Desenvolvido com ❤️ para impacto social
-</p>
+Famílias, estudantes, escolas, ONGs e projetos sociais podem se beneficiar. Em uma campanha de volta às aulas, por exemplo, uma instituição cadastra kits recebidos e acompanha solicitações sem planilhas dispersas. O resultado é maior rastreabilidade, menos desperdício e acesso mais justo a recursos educacionais.
+
+## Dados de demonstração
+
+O seed cria `admin@passaadiante.local`, `doador@passaadiante.local` e `estudante@passaadiante.local`, todos com a senha local `PasseAdiante123!`, além de itens de exemplo. Troque `JWT_SECRET` e remova credenciais demonstrativas antes de qualquer ambiente público.
+
+## Processo da Sprint 3
+
+O trabalho foi dividido entre segurança e contratos, domínio, interface, integração e documentação. Foram adotados commits convencionais, módulos coesos e validação automatizada. Entre as dificuldades estavam inconsistências entre DTOs e Prisma, ausência de autenticação e regras incompletas de pedidos. As soluções foram centralizar os enums no Prisma, sanitizar respostas, aplicar guards e realizar mudanças de pedido/item em transação.
+
+## Frontend
+
+https://github.com/Matheus-Rodrigues-EC/Passa-Adiante-ReactJS
+
+Projeto acadêmico da disciplina Projeto Integrado III do curso de ADS da UFCA.

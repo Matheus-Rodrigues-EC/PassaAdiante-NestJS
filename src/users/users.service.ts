@@ -1,43 +1,28 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-// import JWTService from '..auth/jwt/jwt.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { UsersRepository } from './users.repository';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto.js';
+import { UpdateUserDto } from './dto/update-user.dto.js';
+import { UsersRepository } from './users.repository.js';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    private readonly userRepository: UsersRepository,
-    // private readonly jwtService: JWTService,
-  ) {}
-
-  getHealthUserService(): string {
-    return 'Users Service is healthy';
+  constructor(private readonly users: UsersRepository) {}
+  createUser(input: CreateUserDto) {
+    return this.users.create(input);
   }
-
-  async createUser(user: CreateUserDto) {
-    const userExists = await this.userRepository.findByEmail(user?.email || '');
-    if (!userExists) {
-      throw new HttpException('User already exists', HttpStatus.CONFLICT);
-    }
-    return await this.userRepository.create(user);
+  findAllUsers() {
+    return this.users.findAll();
   }
-
-  async findAllUsers() {
-    return await this.userRepository.findAll();
-  }
-
   async findOneUser(id: string) {
-    return await this.userRepository.findOne(id);
+    const user = await this.users.findOne(id);
+    if (!user) throw new NotFoundException('Usuário não encontrado');
+    return user;
   }
-
-  async updateUser(id: string, user: UpdateUserDto) {
-    return await this.userRepository.update(id, user);
+  async updateUser(id: string, input: UpdateUserDto) {
+    await this.findOneUser(id);
+    return this.users.update(id, input);
   }
-
   async removeUser(id: string) {
-    return await this.userRepository.remove(id);
+    await this.findOneUser(id);
+    return this.users.remove(id);
   }
 }

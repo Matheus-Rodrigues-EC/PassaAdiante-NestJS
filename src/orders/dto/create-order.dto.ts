@@ -1,16 +1,7 @@
-import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
-import { OrderStatus } from '../../generated/prisma/enums.js';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateOrderDto {
-    @IsNotEmpty()
-    @IsString()
-    userId: string;
-
-    @IsNotEmpty()
-    @IsString()
-    itemId: string;
-
-    @IsNotEmpty()
-    @IsEnum(OrderStatus)
-    status: OrderStatus;
+  @IsNotEmpty()
+  @IsString()
+  itemId: string;
 }

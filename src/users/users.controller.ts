@@ -1,48 +1,50 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  HttpCode,
+  Get,
+  Param,
+  Patch,
+  Post,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '../auth/auth.guard.js';
+import { CurrentUser } from '../auth/current-user.decorator.js';
+import { Roles } from '../auth/roles.decorator.js';
+import { RolesGuard } from '../auth/roles.guard.js';
+import { AuthUser } from '../auth/auth.types.js';
+import { UserType } from '../generated/prisma/enums.js';
+import { CreateUserDto } from './dto/create-user.dto.js';
+import { UpdateUserDto } from './dto/update-user.dto.js';
 import { UsersService } from './users.service.js';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 
-@Controller('user')
+@Controller('users')
 export class UsersController {
-  constructor(private readonly userService: UsersService) {}
-
-  @Post('/create')
-  @HttpCode(201)
-  create(@Body() user: CreateUserDto) {
-    return this.userService.createUser(user);
+  constructor(private readonly users: UsersService) {}
+  @Post() create(@Body() input: CreateUserDto) {
+    return this.users.createUser(input);
   }
-
-  @Get('/list')
-  @HttpCode(200)
-  findAll() {
-    return this.userService.findAllUsers();
+  @Get('me') @UseGuards(AuthGuard) me(@CurrentUser() user: AuthUser) {
+    return this.users.findOneUser(user.sub);
   }
-
-  @Get(':id')
-  @HttpCode(200)
-  findOne(@Param('id') id: string) {
-    return this.userService.findOneUser(id);
+  @Get() @UseGuards(AuthGuard, RolesGuard) @Roles(UserType.ADMIN) findAll() {
+    return this.users.findAllUsers();
   }
-
-  @Patch(':id')
-  @HttpCode(200)
-  update(@Param('id') id: string, @Body() user: UpdateUserDto) {
-    return this.userService.updateUser(id, user);
+  @Get(':id') @UseGuards(AuthGuard, RolesGuard) @Roles(UserType.ADMIN) findOne(
+    @Param('id') id: string,
+  ) {
+    return this.users.findOneUser(id);
   }
-
+  @Patch(':id') @UseGuards(AuthGuard, RolesGuard) @Roles(UserType.ADMIN) update(
+    @Param('id') id: string,
+    @Body() input: UpdateUserDto,
+  ) {
+    return this.users.updateUser(id, input);
+  }
   @Delete(':id')
-  @HttpCode(204)
+  @UseGuards(AuthGuard, RolesGuard)
+  @Roles(UserType.ADMIN)
   remove(@Param('id') id: string) {
-    return this.userService.removeUser(id);
+    return this.users.removeUser(id);
   }
 }

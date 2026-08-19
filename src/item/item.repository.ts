@@ -1,56 +1,66 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import {
+  ItemAvailability,
+  ItemCategory,
+  ItemCondition,
+} from '../generated/prisma/enums.js';
+import { PrismaService } from '../prisma/prisma.service.js';
+import { CreateItemDto } from './dto/create-item.dto.js';
+import { UpdateItemDto } from './dto/update-item.dto.js';
 
-import { CreateItemDto } from './dto/create-item.dto';
-import { UpdateItemDto } from './dto/update-item.dto';
-
-import { Item } from '../generated/prisma/client';
-
+export interface ItemFilters {
+  search?: string;
+  category?: ItemCategory;
+  condition?: ItemCondition;
+  availability?: ItemAvailability;
+  userId?: string;
+}
 @Injectable()
 export class ItemsRepository {
   constructor(private readonly prisma: PrismaService) {}
-
-  async create(createItemDto: CreateItemDto): Promise<Item> {
-    return await this.prisma.item.create({
+  create(userId: string, input: CreateItemDto) {
+    return this.prisma.item.create({
       data: {
-        ...createItemDto,
+        ...input,
+        userId,
+        availability: input.availability ?? ItemAvailability.AVAILABLE,
       },
+      include: { user: { select: { id: true, name: true } } },
     });
   }
-
-  async findAll(): Promise<Item[]> {
-    return await this.prisma.item.findMany({
-      include: {
-        user: true,
+  findAll(filters: ItemFilters = {}) {
+    return this.prisma.item.findMany({
+      where: {
+        category: filters.category,
+        condition: filters.condition,
+        availability: filters.availability,
+        userId: filters.userId,
+        OR: filters.search
+          ? [
+              { name: { contains: filters.search, mode: 'insensitive' } },
+              {
+                description: { contains: filters.search, mode: 'insensitive' },
+              },
+            ]
+          : undefined,
       },
+      include: { user: { select: { id: true, name: true } } },
+      orderBy: { createdAt: 'desc' },
     });
   }
-
-  async findOne(id: string): Promise<Item | null> {
-    return await this.prisma.item.findUnique({
+  findOne(id: string) {
+    return this.prisma.item.findUnique({
       where: { id },
-      include: {
-        user: true,
-      },
+      include: { user: { select: { id: true, name: true } }, orders: true },
     });
   }
-
-  async findByUser(userId: string): Promise<Item[]> {
-    return await this.prisma.item.findMany({
-      where: { userId },
-    });
+  update(id: string, input: UpdateItemDto) {
+    return this.prisma.item.update({ where: { id }, data: input });
   }
-
-  async update(id: string, updateItemDto: UpdateItemDto): Promise<Item> {
-    return await this.prisma.item.update({
-      where: { id },
-      data: updateItemDto,
-    });
+  setAvailability(id: string, availability: ItemAvailability) {
+    return this.prisma.item.update({ where: { id }, data: { availability } });
   }
-
-  async remove(id: string): Promise<Item> {
-    return await this.prisma.item.delete({
-      where: { id },
-    });
+  remove(id: string) {
+    return this.prisma.item.delete({ where: { id } });
   }
 }

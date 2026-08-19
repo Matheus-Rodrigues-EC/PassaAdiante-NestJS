@@ -1,11 +1,11 @@
 import { IsNotEmpty, IsString, IsEnum, IsOptional } from 'class-validator';
-import { ItemCategory, ItemCondition, ItemAvailability } from '../../generated/prisma/enums.js';
+import {
+  ItemCategory,
+  ItemCondition,
+  ItemAvailability,
+} from '../../generated/prisma/enums.js';
 
 export class CreateItemDto {
-  @IsNotEmpty()
-  @IsString()
-  userId: string;
-
   @IsNotEmpty()
   @IsString()
   name: string;
@@ -22,7 +22,7 @@ export class CreateItemDto {
   @IsEnum(ItemCondition)
   condition: ItemCondition;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsEnum(ItemAvailability)
-  availability: ItemAvailability;
+  availability?: ItemAvailability;
 }

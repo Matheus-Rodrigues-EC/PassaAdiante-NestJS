@@ -5,9 +5,9 @@ import { ItemsRepository } from './item.repository';
 import { ItemsController } from './item.controller';
 
 @Module({
-    imports: [PrismaModule],
-    providers: [ItemsService, ItemsRepository],
-    controllers: [ItemsController],
-    exports: [ItemsService],
+  imports: [PrismaModule],
+  providers: [ItemsService, ItemsRepository],
+  controllers: [ItemsController],
+  exports: [ItemsService, ItemsRepository],
 })
-export class ItemModule { }
+export class ItemModule {}

@@ -92,4 +92,9 @@ model Order {
   userId String
   item   Item   @relation("ItemOrders", fields: [itemId], references: [id])
   itemId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, itemId])
+  @@map("order")
 }
