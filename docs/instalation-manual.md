@@ -48,6 +48,7 @@ Crie um arquivo **`.env`** na raiz do projeto com o seguinte conteúdo:
 
 ```env
 DATABASE_URL=postgres://usuario:senha@host:porta/nome_do_banco
+FRONTEND_URL=http://localhost:5173
 ```
 
 ### Campos:
@@ -57,6 +58,7 @@ DATABASE_URL=postgres://usuario:senha@host:porta/nome_do_banco
 * `host` → Endereço do banco (ex: localhost)
 * `porta` → Porta do PostgreSQL (padrão: 5432)
 * `nome_do_banco` → Nome do banco de dados
+* `FRONTEND_URL` → Origem(ns) permitida(s) pelo CORS, para o front (React) conseguir chamar a API. Aceita múltiplas origens separadas por vírgula. Se não for definida, assume `http://localhost:5173` (porta padrão do Vite).
 
 ---
 
