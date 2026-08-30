@@ -65,13 +65,15 @@ DATABASE_URL=postgres://usuario:senha@host:porta/nome_do_banco
 Se você não quiser instalar o PostgreSQL diretamente no sistema, pode subir um banco local rapidamente com Docker (é necessário ter o [Docker](https://docs.docker.com/get-docker/) instalado):
 
 ```bash
-docker run --name passaadiante-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+docker run --name passaadiante-db -e POSTGRES_PASSWORD=postgres -p 5433:5432 -d postgres
 ```
 
-Isso sobe um PostgreSQL vazio, acessível em `localhost:5432`. Nesse caso, sua `DATABASE_URL` no `.env` fica assim:
+> 💡 Usamos a porta `5433` (em vez da porta padrão `5432`) porque é comum já ter outro PostgreSQL (nativo ou outro container) ocupando a `5432` na sua máquina. Se a `5433` também já estiver em uso, troque por outra porta livre nos dois lugares: no `-p` do comando (`-p PORTA:5432`) e na `DATABASE_URL` abaixo.
+
+Isso sobe um PostgreSQL vazio, acessível em `localhost:5433`. Nesse caso, sua `DATABASE_URL` no `.env` fica assim:
 
 ```env
-DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres
+DATABASE_URL=postgres://postgres:postgres@localhost:5433/postgres
 ```
 
 > ⚠️ O container só sobe o banco vazio. Ainda é necessário rodar as migrations do Prisma normalmente (próxima seção) pra criar as tabelas.
