@@ -60,6 +60,26 @@ DATABASE_URL=postgres://usuario:senha@host:porta/nome_do_banco
 
 ---
 
+## 🐳 PostgreSQL via Docker (alternativa)
+
+Se você não quiser instalar o PostgreSQL diretamente no sistema, pode subir um banco local rapidamente com Docker (é necessário ter o [Docker](https://docs.docker.com/get-docker/) instalado):
+
+```bash
+docker run --name passaadiante-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+```
+
+Isso sobe um PostgreSQL vazio, acessível em `localhost:5432`. Nesse caso, sua `DATABASE_URL` no `.env` fica assim:
+
+```env
+DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres
+```
+
+> ⚠️ O container só sobe o banco vazio. Ainda é necessário rodar as migrations do Prisma normalmente (próxima seção) pra criar as tabelas.
+
+Pra parar o container quando não precisar mais dele: `docker stop passaadiante-db`. Pra subir de novo depois: `docker start passaadiante-db` (os dados ficam preservados entre reinícios, mas se o container for removido com `docker rm`, os dados se perdem junto).
+
+---
+
 ## 🧬 Prisma ORM
 
 ### Gerar o client do Prisma
