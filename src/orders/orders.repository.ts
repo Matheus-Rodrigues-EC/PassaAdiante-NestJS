@@ -32,7 +32,11 @@ export class OrdersRepository {
         return await this.prisma.order.findMany({
             include: {
                 user: true,
-                item: true,
+                item: {
+                    include: {
+                        user: true,
+                    },
+                },
             },
         });
     }
@@ -42,7 +46,11 @@ export class OrdersRepository {
             where: { id },
             include: {
                 user: true,
-                item: true,
+                item: {
+                    include: {
+                        user: true,
+                    },
+                },
             },
         });
     }
