@@ -96,6 +96,16 @@ npx prisma generate
 npx prisma migrate dev
 ```
 
+### Popular usuários fixos de demonstração (seed)
+
+O front usa dois usuários fixos, sem login real, pra simular os perfis "Usuário comum" e "Usuário admin". Rode o seed depois das migrations:
+
+```bash
+npx prisma db seed
+```
+
+Isso cria (ou atualiza, se já existirem) dois usuários com IDs fixos: um `RECEIVER` (perfil comum) e um `ADMIN`. Idempotente, pode ser rodado quantas vezes for preciso.
+
 ---
 
 ## ▶️ Executando a Aplicação
