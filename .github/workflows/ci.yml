@@ -1,0 +1,33 @@
+name: CI - PassaAdiante NestJS
+
+on:
+  push:
+    branches: [ "dev", "main" ]
+  pull_request:
+    branches: [ "dev", "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copiar código do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar ambiente Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar Lint (Verificação de código)
+        run: npm run lint
+
+      - name: Executar testes automatizados
+        run: npm run test
+
+      - name: Executar Build do projeto NestJS
+        run: npm run build
