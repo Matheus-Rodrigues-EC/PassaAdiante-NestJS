@@ -1,11 +1,14 @@
 name: CI
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Placeholder
-        run: echo "Etapas do pipeline serão adicionadas nas próximas issues"
+      - name: Checkout do código
+        uses: actions/checkout@v4
