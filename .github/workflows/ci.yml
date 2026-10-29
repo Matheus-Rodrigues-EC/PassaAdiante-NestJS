@@ -2,9 +2,9 @@ name: CI - PassaAdiante NestJS
 
 on:
   push:
-    branches: [ "dev", "main" ]
+    branches: [ "dev", "main", "feature/workflow" ]
   pull_request:
-    branches: [ "dev", "main" ]
+    branches: [ "dev", "main", "feature/workflow" ]
 
 jobs:
   build-and-test:
@@ -23,7 +23,7 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Executar Lint (Verificação de código)
+      - name: Executar Lint
         run: npm run lint
 
       - name: Executar testes automatizados
