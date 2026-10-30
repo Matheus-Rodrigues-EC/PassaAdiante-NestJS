@@ -1,5 +1,9 @@
 import { IsNotEmpty, IsString, IsEnum, IsOptional } from 'class-validator';
-import { ItemCategory, ItemCondition, ItemAvailability } from '../../generated/prisma/enums.js';
+import {
+  ItemCategory,
+  ItemCondition,
+  ItemAvailability,
+} from '../../generated/prisma/enums.js';
 
 export class CreateItemDto {
   @IsNotEmpty()

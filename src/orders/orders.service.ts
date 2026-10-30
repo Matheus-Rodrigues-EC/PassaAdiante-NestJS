@@ -5,9 +5,7 @@ import { OrdersRepository } from './orders.repository';
 
 @Injectable()
 export class OrdersService {
-  constructor(
-    private readonly orderRepository: OrdersRepository,
-  ){}
+  constructor(private readonly orderRepository: OrdersRepository) {}
 
   getHealthOrderService(): string {
     return 'Orders Service is healthy';
