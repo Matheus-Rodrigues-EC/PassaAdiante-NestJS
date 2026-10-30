@@ -24,3 +24,6 @@ jobs:
 
       - name: Executar Lint
         run: npm run lint:check
+      
+      - name: Executar Testes Automatizados
+        run: npm run test
