@@ -8,6 +8,6 @@ import { OrdersRepository } from './orders.repository';
   imports: [PrismaModule],
   controllers: [OrdersController],
   providers: [OrdersService, OrdersRepository],
-  exports: [OrdersService]
+  exports: [OrdersService],
 })
 export class OrdersModule {}
