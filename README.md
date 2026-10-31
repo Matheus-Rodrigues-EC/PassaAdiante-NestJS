@@ -150,6 +150,18 @@ Para acompanhar a execução do **Actions** siga esses passos:
 
 `Actions` → `CI` → `Selecione a execução desejada` → `Consulta de Logs`
 
+### Contribuição extensionista
+
+O **Passe Adiante** aproxima o aprendizado em desenvolvimento de software de uma necessidade social: facilitar a doação e o reaproveitamento de materiais escolares. Nesse contexto, a integração contínua apoia a construção e a manutenção de uma plataforma voltada a doadores, estudantes, famílias e instituições.
+
+Para a equipe, configurar e acompanhar as verificações automáticas permite colocar em prática conhecimentos de testes, versionamento e qualidade de código. A análise das falhas e a revisão das alterações também incentivam a colaboração, a troca de conhecimentos e a responsabilidade compartilhada pelo funcionamento do projeto.
+
+Para o público atendido, a contribuição é indireta: identificar problemas durante o desenvolvimento ajuda a reduzir o risco de disponibilizar alterações que prejudiquem o uso da plataforma. Conforme os testes passarem a cobrir os fluxos de cadastro, doação e solicitação de materiais, a CI poderá ajudar a detectar regressões nessas funcionalidades antes que cheguem aos usuários.
+
+O workflow documentado e as verificações padronizadas também facilitam a entrada de novos colaboradores e a continuidade da manutenção do projeto. Isso contribui para preservar o conhecimento da equipe e apoiar a evolução da solução ao longo do tempo.
+
+A integração contínua não garante a ausência de erros nem comprova, por si só, o impacto social da plataforma. Ela complementa a revisão de código, os testes dos fluxos de uso e a escuta das necessidades da comunidade, apoiando o objetivo de tornar a doação de materiais escolares mais acessível e confiável.
+
 ---
 
 ## 🧪 Testes
