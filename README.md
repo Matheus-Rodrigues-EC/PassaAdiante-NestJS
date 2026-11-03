@@ -188,7 +188,6 @@ Este projeto está sob a licença **MIT**.
 
 ---
 
-
 <p align="center">
   Desenvolvido com ❤️ para impacto social
 </p>
